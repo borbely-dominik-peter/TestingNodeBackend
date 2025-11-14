@@ -23,7 +23,7 @@ router.get('/battleships', async (req, res) => {
     }
 });
 
-// Get 1 Ship
+// Get one Ship
 router.get('/battleships/:id', async (req, res) => {
     try {
         const battleship = await BBModel.findById(req.params.id);
