@@ -1,0 +1,165 @@
+
+{
+  "battleships": [
+    {
+      "id": 1,
+      "name": "USS Iowa",
+      "class": "Iowa-class",
+      "commissioned": 1943,
+      "displacement_tons": 58000,
+      "status": "Museum ship"
+    },
+    {
+      "id": 2,
+      "name": "Yamato",
+      "class": "Yamato-class",
+      "commissioned": 1941,
+      "displacement_tons": 72000,
+      "status": "Sunk in battle"
+    },
+    {
+      "id": 3,
+      "name": "HMS Vanguard",
+      "class": "Vanguard-class",
+      "commissioned": 1946,
+      "displacement_tons": 52000,
+      "status": "Scrapped"
+    },
+    {
+      "id": 4,
+      "name": "USS Missouri",
+      "class": "Iowa-class",
+      "commissioned": 1944,
+      "displacement_tons": 58000,
+      "status": "Museum ship"
+    },
+    {
+      "id": 5,
+      "name": "Bismarck",
+      "class": "Bismarck-class",
+      "commissioned": 1940,
+      "displacement_tons": 50000,
+      "status": "Sunk in battle"
+    },
+    {
+      "id": 6,
+      "name": "Tirpitz",
+      "class": "Bismarck-class",
+      "commissioned": 1941,
+      "displacement_tons": 52000,
+      "status": "Sunk in battle"
+    },
+    {
+      "id": 7,
+      "name": "USS New Jersey",
+      "class": "Iowa-class",
+      "commissioned": 1943,
+      "displacement_tons": 58000,
+      "status": "Museum ship"
+    },
+    {
+      "id": 8,
+      "name": "USS Wisconsin",
+      "class": "Iowa-class",
+      "commissioned": 1944,
+      "displacement_tons": 58000,
+      "status": "Museum ship"
+    },
+    {
+      "id": 9,
+      "name": "USS South Dakota",
+      "class": "South Dakota-class",
+      "commissioned": 1942,
+      "displacement_tons": 46000,
+      "status": "Scrapped"
+    },
+    {
+      "id": 10,
+      "name": "USS Massachusetts",
+      "class": "South Dakota-class",
+      "commissioned": 1942,
+      "displacement_tons": 46000,
+      "status": "Museum ship"
+    },
+    {
+      "id": 11,
+      "name": "USS Alabama",
+      "class": "South Dakota-class",
+      "commissioned": 1942,
+      "displacement_tons": 46000,
+      "status": "Museum ship"
+    },
+    {
+      "id": 12,
+      "name": "HMS King George V",
+      "class": "King George V-class",
+      "commissioned": 1940,
+      "displacement_tons": 42000,
+      "status": "Scrapped"
+    },
+    {
+      "id": 13,
+      "name": "HMS Prince of Wales",
+      "class": "King George V-class",
+      "commissioned": 1941,
+      "displacement_tons": 42000,
+      "status": "Sunk in battle"
+    },
+    {
+      "id": 14,
+      "name": "Richelieu",
+      "class": "Richelieu-class",
+      "commissioned": 1940,
+      "displacement_tons": 48000,
+      "status": "Scrapped"
+    },
+    {
+      "id": 15,
+      "name": "Jean Bart",
+      "class": "Richelieu-class",
+      "commissioned": 1949,
+      "displacement_tons": 48000,
+      "status": "Scrapped"
+    },
+    {
+      "id": 16,
+      "name": "Littorio",
+      "class": "Littorio-class",
+      "commissioned": 1940,
+      "displacement_tons": 45000,
+      "status": "Sunk in battle"
+    },
+    {
+      "id": 17,
+      "name": "Roma",
+      "class": "Littorio-class",
+      "commissioned": 1942,
+      "displacement_tons": 45000,
+      "status": "Sunk in battle"
+    },
+    {
+      "id": 18,
+      "name": "Vittorio Veneto",
+      "class": "Littorio-class",
+      "commissioned": 1940,
+      "displacement_tons": 45000,
+      "status": "Scrapped"
+    },
+    {
+      "id": 19,
+      "name": "Scharnhorst",
+      "class": "Scharnhorst-class",
+      "commissioned": 1939,
+      "displacement_tons": 38000,
+      "status": "Sunk in battle"
+    },
+    {
+      "id": 20,
+      "name": "Gneisenau",
+      "class": "Scharnhorst-class",
+      "commissioned": 1938,
+      "displacement_tons": 38000,
+      "status": "Scuttled"
+    }
+  ]
+}

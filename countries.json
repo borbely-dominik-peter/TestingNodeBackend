@@ -1,0 +1,164 @@
+{
+  "countries": [
+    {
+      "id": 1,
+      "name": "United States",
+      "continent": "North America",
+      "navy_founded": 1775,
+      "capital": "Washington, D.C.",
+      "biggest_naval_battle": "Battle of Leyte Gulf"
+    },
+    {
+      "id": 2,
+      "name": "Japan",
+      "continent": "Asia",
+      "navy_founded": 1869,
+      "capital": "Tokyo",
+      "biggest_naval_battle": "Battle of Midway"
+    },
+    {
+      "id": 3,
+      "name": "United Kingdom",
+      "continent": "Europe",
+      "navy_founded": 1546,
+      "capital": "London",
+      "biggest_naval_battle": "Battle of Jutland"
+    },
+    {
+      "id": 4,
+      "name": "United States",
+      "continent": "North America",
+      "navy_founded": 1775,
+      "capital": "Washington, D.C.",
+      "biggest_naval_battle": "Battle of Leyte Gulf"
+    },
+    {
+      "id": 5,
+      "name": "Germany",
+      "continent": "Europe",
+      "navy_founded": 1848,
+      "capital": "Berlin",
+      "biggest_naval_battle": "Battle of the Atlantic"
+    },
+    {
+      "id": 6,
+      "name": "Germany",
+      "continent": "Europe",
+      "navy_founded": 1848,
+      "capital": "Berlin",
+      "biggest_naval_battle": "Battle of the Atlantic"
+    },
+    {
+      "id": 7,
+      "name": "United States",
+      "continent": "North America",
+      "navy_founded": 1775,
+      "capital": "Washington, D.C.",
+      "biggest_naval_battle": "Battle of Leyte Gulf"
+    },
+    {
+      "id": 8,
+      "name": "United States",
+      "continent": "North America",
+      "navy_founded": 1775,
+      "capital": "Washington, D.C.",
+      "biggest_naval_battle": "Battle of Leyte Gulf"
+    },
+    {
+      "id": 9,
+      "name": "United States",
+      "continent": "North America",
+      "navy_founded": 1775,
+      "capital": "Washington, D.C.",
+      "biggest_naval_battle": "Battle of Guadalcanal"
+    },
+    {
+      "id": 10,
+      "name": "United States",
+      "continent": "North America",
+      "navy_founded": 1775,
+      "capital": "Washington, D.C.",
+      "biggest_naval_battle": "Battle of the Philippine Sea"
+    },
+    {
+      "id": 11,
+      "name": "United States",
+      "continent": "North America",
+      "navy_founded": 1775,
+      "capital": "Washington, D.C.",
+      "biggest_naval_battle": "Battle of the Coral Sea"
+    },
+    {
+      "id": 12,
+      "name": "United Kingdom",
+      "continent": "Europe",
+      "navy_founded": 1546,
+      "capital": "London",
+      "biggest_naval_battle": "Battle of Jutland"
+    },
+    {
+      "id": 13,
+      "name": "United Kingdom",
+      "continent": "Europe",
+      "navy_founded": 1546,
+      "capital": "London",
+      "biggest_naval_battle": "Battle of the Denmark Strait"
+    },
+    {
+      "id": 14,
+      "name": "France",
+      "continent": "Europe",
+      "navy_founded": 1624,
+      "capital": "Paris",
+      "biggest_naval_battle": "Battle of Trafalgar"
+    },
+    {
+      "id": 15,
+      "name": "France",
+      "continent": "Europe",
+      "navy_founded": 1624,
+      "capital": "Paris",
+      "biggest_naval_battle": "Battle of Dakar"
+    },
+    {
+      "id": 16,
+      "name": "Italy",
+      "continent": "Europe",
+      "navy_founded": 1861,
+      "capital": "Rome",
+      "biggest_naval_battle": "Battle of Cape Matapan"
+    },
+    {
+      "id": 17,
+      "name": "Italy",
+      "continent": "Europe",
+      "navy_founded": 1861,
+      "capital": "Rome",
+      "biggest_naval_battle": "Battle of Cape Matapan"
+    },
+    {
+      "id": 18,
+      "name": "Italy",
+      "continent": "Europe",
+      "navy_founded": 1861,
+      "capital": "Rome",
+      "biggest_naval_battle": "Battle of Taranto"
+    },
+    {
+      "id": 19,
+      "name": "Germany",
+      "continent": "Europe",
+      "navy_founded": 1848,
+      "capital": "Berlin",
+      "biggest_naval_battle": "Battle of the North Cape"
+    },
+    {
+      "id": 20,
+      "name": "Germany",
+      "continent": "Europe",
+      "navy_founded": 1848,
+      "capital": "Berlin",
+      "biggest_naval_battle": "Battle of Narvik"
+    }
+  ]
+}
