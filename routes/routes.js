@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const BBModel = require('../model/todo.model');
-// const BBController = require("../controller/todo.controller")
+const BBModel = require('../model/battleship.model');
 
-// Create a new BB
 router.post('/battleships', async (req, res) => {
     try {
         const newBB = await BBModel.create(req.body);
@@ -13,7 +11,6 @@ router.post('/battleships', async (req, res) => {
     }
 });
 
-// Get all Ships
 router.get('/battleships', async (req, res) => {
     try {
         const BBs = await BBModel.find();
@@ -23,10 +20,10 @@ router.get('/battleships', async (req, res) => {
     }
 });
 
-// Get one Ship
 router.get('/battleships/:id', async (req, res) => {
     try {
-        const battleship = await BBModel.findById(req.params.id);
+        const id = Number(req.params.id);
+        const battleship = await BBModel.findOne({ _id: id });
         if (!battleship) {
             return res.status(404).send();
         }
@@ -36,10 +33,10 @@ router.get('/battleships/:id', async (req, res) => {
     }
 });
 
-// Update a ship
 router.patch('/battleships/:id', async (req, res) => {
     try {
-        const battleship = await BBModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const id = Number(req.params.id);
+        const battleship = await BBModel.findOneAndUpdate({ _id: id }, req.body, { new: true });
         if (!battleship) {
             return res.status(404).send();
         }
@@ -49,10 +46,10 @@ router.patch('/battleships/:id', async (req, res) => {
     }
 });
 
-// Delete a ship
 router.delete('/battleships/:id', async (req, res) => {
     try {
-        const battleship = await BBModel.findByIdAndDelete(req.params.id);
+        const id = Number(req.params.id);
+        const battleship = await BBModel.findOneAndDelete({ _id: id });
         if (!battleship) {
             return res.status(404).send();
         }
