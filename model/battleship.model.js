@@ -27,7 +27,7 @@ const BBSchema = new mongoose.Schema({
     }
 });
 
-BBSchema.pre('save', async function(next) {
+/*BBSchema.pre('save', async function(next) {
     if (this.isNew) {
         try {
             const counter = await Counter.findByIdAndUpdate(
@@ -43,7 +43,7 @@ BBSchema.pre('save', async function(next) {
     } else {
         next();
     }
-});
+});*/
 
 const BBModel = mongoose.model('Battleship', BBSchema);
 

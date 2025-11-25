@@ -24,7 +24,7 @@ const CountrySchema = new mongoose.Schema({
     }
 });
 
-CountrySchema.pre('save', async function (next) {
+/*CountrySchema.pre('save', async function (next) {
     if (this.isNew) {
         try {
             const counter = await Counter.findByIdAndUpdate(
@@ -40,7 +40,7 @@ CountrySchema.pre('save', async function (next) {
     } else {
         next();
     }
-});
+});*/
 
 const CountryModel = mongoose.model('Country', CountrySchema);
 
