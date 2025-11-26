@@ -14,6 +14,54 @@ exports.Create = async (req, res) => {
     }
 }
 
+exports.FindAll = async (req, res) => {
+    try {
+        const BBs = await BBModel.find();
+        res.status(201).send(BBs);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
+exports.FindOne = async (req, res) => {
+    try {
+        const id = Number(req.params.id);
+        const battleship = await BBModel.findOne({ _id: id });
+        if (!battleship) {
+            return res.status(404).send();
+        }
+        res.status(200).send(battleship);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
+exports.EditOne =  async (req, res) => {
+    try {
+        const id = Number(req.params.id);
+        const battleship = await BBModel.findOneAndUpdate({ _id: id }, req.body, { new: true });
+        if (!battleship) {
+            return res.status(404).send();
+        }
+        res.status(200).send(battleship);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+}
+
+exports.DeleteOne = async (req, res) => {
+    try {
+        const id = Number(req.params.id);
+        const battleship = await BBModel.findOneAndDelete({ _id: id });
+        if (!battleship) {
+            return res.status(404).send();
+        }
+        res.status(204).send();
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
 /*exports.CreateBB = (req, res, next) => {
     const data = BBModel.create(req.body) // mongoose built-in, gives back post data
-    res.status(201).json(data); // sets status code
+    res.status(201).json(data); // sets status code*/
