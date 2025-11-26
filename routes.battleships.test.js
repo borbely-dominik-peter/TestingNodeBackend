@@ -1,35 +1,34 @@
-const routes = require("./routes/routes")
-
-const express = require("express")
-express.Router = jest.fn();
-
-const BBModel = require('/model/battleship.model.js');
-const HTTPMocks = require("node-mocks-http");
-const MockedBBData = require("./TestingData/MockBB.json")
-const BBController = require("./controller/BB.controller");
+let BBModel = require('/model/battleship.model');
+let HTTPMocks = require("node-mocks-http");
+let MockedBBData = require("./TestingData/MockBB.json")
+let BBController = require("./controller/BB.controller");
 
 BBModel.create = jest.fn();
 BBModel.find = jest.fn();
 
 let req, res, next;
-beforeEach(() => {
-    req = HTTPMocks.createRequest()
-    res = HTTPMocks.createResponse()
-    next = null
-    req.body = MockedBBData
-})
+req = HTTPMocks.createRequest()
+res = HTTPMocks.createResponse()
+next = null
+req.body = MockedBBData
 
-describe("Tests of Get All route of battleships", () => {
+describe("/api/battleships, METHOD: GET", () => {
     it('should exist', () => {
-        expect(typeof BBModel.find).toBe("function");
+        expect(typeof BBController.FindAll).toBe("function");
     })
-    it('should return with status code 200', () => {
+    it('should have been called', async () => {
+        let SpyTarget = jest.spyOn(BBController, "FindAll");
+        BBController.FindAll(req,res)
+        expect(SpyTarget).toHaveBeenCalled()
+    })
+    it('should come back with 200 status code', async () => {
+        BBController.FindAll(req,res)
         expect(res.statusCode).toBe(200);
     })
-    /*it('res.status to exist', () => {
-        BBModel.find();
-        expect(res.status).toBe("asd");
-    })*/
+    it('should come back with >1 len array', () => {
+        BBController.FindAll(req,res)
+        expect(res._getData().length).toBeGreaterThan(1);
+    })
 });
 
 describe("Tests of Post Route of battleships", () => {

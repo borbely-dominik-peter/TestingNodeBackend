@@ -11,6 +11,6 @@ const BBSchema = new mongoose.Schema({
     }
 })
 
-const BBModel = mongoose.model('Todo', BBSchema)
+const TDM = mongoose.model('Todo', BBSchema)
 
-module.exports = BBModel
+module.exports = TDM

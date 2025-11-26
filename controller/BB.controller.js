@@ -1,4 +1,4 @@
-const BBModel = require("../model/todo.model")
+const BBModel = require("../model/battleship.model")
 
 exports.Create = async (req, res) => {
     try {
@@ -14,10 +14,11 @@ exports.Create = async (req, res) => {
     }
 }
 
+
 exports.FindAll = async (req, res) => {
     try {
         const BBs = await BBModel.find();
-        res.status(201).send(BBs);
+        res.status(200).send(BBs);
     } catch (error) {
         res.status(500).send(error);
     }
@@ -36,7 +37,7 @@ exports.FindOne = async (req, res) => {
     }
 }
 
-exports.EditOne =  async (req, res) => {
+exports.EditOne = async (req, res) => {
     try {
         const id = Number(req.params.id);
         const battleship = await BBModel.findOneAndUpdate({ _id: id }, req.body, { new: true });
