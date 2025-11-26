@@ -1,8 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-//const mongoString = "mongodb+srv://jankojulianna_db_user:n0PBwr3KvCeJNzWW@cluster0.gpzrj36.mongodb.net/battleships";
-const mongoString = "mongodb://localhost:27017/battleships";
+// const mongoString = env("DB_URL");
+//const mongoString = "mongodb://localhost:27017/battleships";
+const mongoString = "mongodb+srv://MDB:MDB@sandbox.lxgxyuc.mongodb.net/battleships?appName=Sandbox";
 mongoose.connect(mongoString);
 const database = mongoose.connection;
 const routes = require("./routes/routes");

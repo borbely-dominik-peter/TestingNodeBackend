@@ -2,25 +2,14 @@ const express = require('express');
 const router = express.Router();
 const BBModel = require('../model/battleship.model');
 const CountryModel = require('../model/country.model');
+const { Create } = require('../controller/BB.controller');
 
-router.post('/battleships', async (req, res) => {
-    try {
-        // DO NOT Give the ID to this manually
-        let maxID = 0;
-        const AllBB = await BBModel.find();
-        maxID = AllBB.length + 1
-        req.body._id = maxID;
-        const newBB = await BBModel.create(req.body);
-        res.status(201).send(newBB);
-    } catch (error) {
-        res.status(400).send(error);
-    }
-});
+router.post('/battleships', BBModel.Create(req,res));
 
 router.get('/battleships', async (req, res) => {
     try {
         const BBs = await BBModel.find();
-        res.status(200).send(BBs);
+        res.status(201).send(BBs);
     } catch (error) {
         res.status(500).send(error);
     }
