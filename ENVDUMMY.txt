@@ -1,1 +1,0 @@
-const mongoString = "mongodb+srv://MDB:MDB@sandbox.lxgxyuc.mongodb.net/battleships?appName=Sandbox";
