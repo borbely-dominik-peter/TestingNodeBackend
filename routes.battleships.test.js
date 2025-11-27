@@ -5,7 +5,7 @@ let BBController = require("./controller/BB.controller");
 
 //jest.mock("BBModel");
 BBModel.create = jest.fn();
-// BBModel.find = jest.fn();
+BBModel.find = jest.fn();
 
 let req, res, next;
 req = HTTPMocks.createRequest()

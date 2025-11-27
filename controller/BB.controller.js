@@ -14,7 +14,7 @@ exports.Create = async (req, res) => {
         if (error instanceof Error) {
             return error.message
         }
-        return "Oh no";
+        return "Oh no"
     }
 }
 
