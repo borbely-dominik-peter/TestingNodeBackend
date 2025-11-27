@@ -11,6 +11,10 @@ exports.Create = async (req, res) => {
         res.status(201).send(newBB);
     } catch (error) {
         res.status(400).send(error);
+        if (error instanceof Error) {
+            return error.message
+        }
+        return "Oh no";
     }
 }
 
