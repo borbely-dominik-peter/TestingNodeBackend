@@ -1,24 +1,5 @@
 const BBModel = require("../model/battleship.model")
 
-exports.Create = async (req, res) => {
-    try {
-        // DO NOT Give the ID to this manually
-        let maxID = 0;
-        const AllBB = await BBModel.find();
-        maxID = AllBB.length + 1
-        req.body._id = maxID;
-        const newBB = await BBModel.create(req.body);
-        res.status(201).send(newBB);
-    } catch (error) {
-        res.status(400).send(error);
-        if (error instanceof Error) {
-            return error.message
-        }
-        return "Oh no"
-    }
-}
-
-
 exports.FindAll = async (req, res) => {
     try {
         const BBs = await BBModel.find();
@@ -28,7 +9,7 @@ exports.FindAll = async (req, res) => {
     }
 }
 
-exports.FindOne = async (req, res) => {
+exports.FindOneBB = async (req, res) => {
     try {
         const id = Number(req.params.id);
         const battleship = await BBModel.findOne({ _id: id });
@@ -67,6 +48,24 @@ exports.DeleteOne = async (req, res) => {
     }
 }
 
-/*exports.CreateBB = (req, res, next) => {
-    const data = BBModel.create(req.body) // mongoose built-in, gives back post data
-    res.status(201).json(data); // sets status code*/
+exports.Create = async (req, res) => {
+    try {
+        // DO NOT Give the ID to this manually
+        let maxID = 0;
+        const AllBB = await BBModel.find();
+        maxID = AllBB.length + 1
+        req.body._id = maxID;
+        if (req.body.class == null || req.body.name == null) {
+            res.status(422).send("");
+            return;
+        }
+        const newBB = await BBModel.create(req.body);
+        res.status(201).send(newBB);
+    } catch (error) {
+        res.status(400).send(error);
+        if (error instanceof Error) {
+            return error.message
+        }
+        return "Oh no"
+    }
+}

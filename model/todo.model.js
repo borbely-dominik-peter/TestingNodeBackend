@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+/*const mongoose = require('mongoose')
 
 const BBSchema = new mongoose.Schema({
     title: {
@@ -13,4 +13,4 @@ const BBSchema = new mongoose.Schema({
 
 const TDM = mongoose.model('Todo', BBSchema)
 
-module.exports = TDM
+module.exports = TDM*/
