@@ -3,6 +3,8 @@ const HTTPMocks = require("node-mocks-http");
 const MockedCountryData = require("./TestingData/MockCountry.json")
 const CountryCont = require("./controller/country.controller");
 
+// mocking of external dependencies of controller functions
+
 CountryModel.create = jest.fn();
 CountryModel.find = jest.fn( () => {
     return [
@@ -63,13 +65,15 @@ describe("/api/countries, METHOD: POST", () => {
         SpyTarget(req,res)
         expect(SpyTarget).toHaveBeenCalled()
     })
-    it("BBModel.Create is called", () => {
+    it("CountryModel.Create is called", () => {
+        CountryCont.Create(req,res)
         req.body = MockedCountryData
         expect(CountryModel.create).toHaveBeenCalled();
     })
     it("Should return with code 201", () => {
-        let SpyTarget = jest.spyOn(CountryCont, "Create");
-        SpyTarget(req,res)
+        CountryCont.Create(req,res)
+        /*let SpyTarget = jest.spyOn(CountryCont, "Create");
+        SpyTarget(req,res)*/
         expect(res.statusCode).toBe(201);
     })
     /*it("should fail with 422 code", () => {
@@ -83,7 +87,7 @@ describe("/api/countries, METHOD: POST", () => {
 
 
 
-describe("/api/battleships/:id METHOD: PATCH", () => {
+describe("/api/countries/:id METHOD: PATCH", () => {
     it("should exist", () => {
         expect(typeof CountryCont.Change).toBe("function");
     })
@@ -92,9 +96,10 @@ describe("/api/battleships/:id METHOD: PATCH", () => {
         SpyTarget(req,res)
         expect(SpyTarget).toHaveBeenCalled()
     })
-    it("is succesfull if BBModel.findOneAndUpdate is called", () => {
-        let SpyTarget = jest.spyOn(CountryCont, "Change")
-        SpyTarget(req,res);
+    it("is succesfull if CountryModel.findOneAndUpdate is called", () => {
+        CountryCont.GetOne(req,res);
+        /*let SpyTarget = jest.spyOn(CountryCont, "Change")
+        SpyTarget(req,res);*/
         expect(CountryModel.findOneAndUpdate).toHaveBeenCalled();
     })
     /*it("if it succeeds, returns code 200", () => {
@@ -102,7 +107,7 @@ describe("/api/battleships/:id METHOD: PATCH", () => {
         SpyTarget(req,res);
         expect(res.statusCode).toBe(200);
     })*/
-    it("if BBModel.findOneAndUpdate fails(return value is null), then code is 404", () => {
+    it("if CountryModel.findOneAndUpdate fails(return value is null), then code is 404", () => {
         CountryModel.findOneAndUpdate.mockReturnValueOnce([]) 
         /*let SpyTarget = jest.spyOn(BBController, "EditOne");
         SpyTarget(req,res);*/
@@ -122,8 +127,9 @@ describe("/api/countries/id, METHOD: GET", () => {
         expect(CountryCont.GetOne).toHaveBeenCalled()
     })
     it("should return with status code 200", () => {
-        let SpyTarget = jest.spyOn(CountryCont, "GetOne")
-        SpyTarget(req,res)
+        /*let SpyTarget = jest.spyOn(CountryCont, "GetOne")
+        SpyTarget(req,res)*/
+        CountryCont.GetOne(req,res)
         expect(res.statusCode).toBe(200)
     })
     /*it("should fail with non-existant id, simulated with a faulty model", async () => {
@@ -136,8 +142,9 @@ describe("/api/countries/id, METHOD: GET", () => {
         CountryModel.findOne = jest.fn(() => {
             return MockedCountryData
         })
-        let SpyTarget = jest.spyOn(CountryCont,"GetOne");
-        SpyTarget(req,res);
+        CountryCont.GetOne(req,res)
+        /*let SpyTarget = jest.spyOn(CountryCont,"GetOne");
+        SpyTarget(req,res);*/
         expect(res._getData()).toStrictEqual([MockedCountryData]);
     })
 })
@@ -151,14 +158,16 @@ describe("/api/countries/:id METHOD: DELETE", () => {
         SpyTarget(req,res)
         expect(SpyTarget).toHaveBeenCalled()
     })
-    it("should call BBModel.findOneAndDelete", () => {
-        let SpyTarget = jest.spyOn(CountryCont, "Delete");
-        SpyTarget(req,res);
+    it("should call CountryModel.findOneAndDelete", () => {
+        /*let SpyTarget = jest.spyOn(CountryCont, "Delete");
+        SpyTarget(req,res);*/
+        CountryCont.Delete(req,res)
         expect(CountryModel.findOneAndDelete).toHaveBeenCalled();
     })
     it("should return with status code 204", () => {
-        let SpyTarget = jest.spyOn(CountryCont, "Delete");
-        SpyTarget(req,res);
+        /*let SpyTarget = jest.spyOn(CountryCont, "Delete");
+        SpyTarget(req,res);*/
+        CountryCont.Delete(req,res);
         expect(res.statusCode).toBe(204);
     })
 })
