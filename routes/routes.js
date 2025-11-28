@@ -3,7 +3,7 @@ const router = express.Router();
 const BBModel = require('../model/battleship.model');
 const CountryModel = require('../model/country.model');
 const BBController = require('../controller/BB.controller');
-const CountryController = require('../controller/Country.controller');
+const CountryController = require('../controller/country.controller');
 const { Create } = require('../controller/BB.controller');
 const req = require('express/lib/request');
 

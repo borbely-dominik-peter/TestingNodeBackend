@@ -1,28 +1,26 @@
-const BBModel = require('./model/battleship.model');
+const CountryModel = require('./model/country.model');
 const HTTPMocks = require("node-mocks-http");
-const MockedBBData = require("./TestingData/MockBB.json")
-const BBController = require("./controller/BB.controller");
+const MockedCountryData = require("./TestingData/MockCountry.json")
+const CountryCont = require("./controller/country.controller");
 
-BBModel.create = jest.fn();
-BBModel.find = jest.fn( () => {
+CountryModel.create = jest.fn();
+CountryModel.find = jest.fn( () => {
     return [
         {
-            "_id": 1,
-            "Cid": 1,
-            "name": "USS E",
-            "class": "E-class",
-            "commissioned": 2024,
-            "displacement_tons": 44000,
-            "status": "E"
+            "name": "United States",
+            "continent": "North America",
+            "navy_founded": 1775,
+            "capital": "Washington, D.C.",
+            "biggest_naval_battle": "Battle of Leyte Gulf"
         }
     ]
 }
 );
-BBModel.findOne = jest.fn(() => {
-    return [MockedBBData]
+CountryModel.findOne = jest.fn(() => {
+    return [MockedCountryData]
 })
-BBModel.findOneAndUpdate = jest.fn();
-BBModel.findOneAndDelete = jest.fn(() => {
+CountryModel.findOneAndUpdate = jest.fn();
+CountryModel.findOneAndDelete = jest.fn(() => {
     return [];
 })
 
@@ -31,54 +29,53 @@ let req, res, next;
 req = HTTPMocks.createRequest()
 res = HTTPMocks.createResponse()
 next = null
-req.body = MockedBBData
+req.body = MockedCountryData
 
-describe("/api/battleships, METHOD: GET", () => {
+describe("/api/countries, METHOD: GET", () => {
     it('should exist', () => {
-        expect(typeof BBController.FindAll).toBe("function");
+        expect(typeof CountryCont.GetAll).toBe("function");
     })
     it('should have been called', async () => {
-        let SpyTarget = jest.spyOn(BBController, "FindAll");
-        BBController.FindAll(req,res)
+        let SpyTarget = jest.spyOn(CountryCont, "GetAll");
+        CountryCont.GetAll(req,res)
         expect(SpyTarget).toHaveBeenCalled()
     })
     it('should come back with 200 status code', async () => {
-        req.body = MockedBBData
-        BBController.FindAll(req,res)
+        req.body = MockedCountryData
+        CountryCont.GetAll(req,res)
         expect(res.statusCode).toBe(200)
     })
     it('should give the mocked data back', () => {
-        BBModel.find = jest.fn(() => {
-            return MockedBBData
+        CountryModel.find = jest.fn(() => {
+            return MockedCountryData
         })
-        expect(res._getData()).toStrictEqual([MockedBBData]);
+        expect(res._getData()).toStrictEqual([MockedCountryData]);
     })
     
 });
 
-describe("/api/battleships, METHOD: POST", () => {
+describe("/api/countries, METHOD: POST", () => {
     it("should exist", () => {
-        expect(typeof BBController.Create).toBe("function");
+        expect(typeof CountryCont.Create).toBe("function");
     })
     it("should be called", () => {
-        let SpyTarget = jest.spyOn(BBController, "Create")
+        let SpyTarget = jest.spyOn(CountryCont, "Create")
         SpyTarget(req,res)
         expect(SpyTarget).toHaveBeenCalled()
     })
     it("BBModel.Create is called", () => {
-        req.body = MockedBBData
-        expect(BBModel.create).toHaveBeenCalled();
+        req.body = MockedCountryData
+        expect(CountryModel.create).toHaveBeenCalled();
     })
     it("Should return with code 201", () => {
-        let SpyTarget = jest.spyOn(BBController, "Create");
+        let SpyTarget = jest.spyOn(CountryCont, "Create");
         SpyTarget(req,res)
         expect(res.statusCode).toBe(201);
     })
     /*it("should fail with 422 code", () => {
-        let SpyTarget = jest.spyOn(BBController, "Create");
-        BBModel.create.mockReturnValueOnce("error");
+        let SpyTarget = jest.spyOn(CountryCont, "Create");
+        CountryModel.create = jest.fn(() => {return "error"});
         SpyTarget(req,res);
-        expect(res._getData()).toBe("a");
         expect(res.statusCode).toBe(422);
         //SpyTarget.mockReset();
     })*/
@@ -88,17 +85,17 @@ describe("/api/battleships, METHOD: POST", () => {
 
 describe("/api/battleships/:id METHOD: PATCH", () => {
     it("should exist", () => {
-        expect(typeof BBController.EditOne).toBe("function");
+        expect(typeof CountryCont.Change).toBe("function");
     })
     it("should be called", () => {
-        let SpyTarget = jest.spyOn(BBController, "EditOne")
+        let SpyTarget = jest.spyOn(CountryCont, "Change")
         SpyTarget(req,res)
         expect(SpyTarget).toHaveBeenCalled()
     })
     it("is succesfull if BBModel.findOneAndUpdate is called", () => {
-        let SpyTarget = jest.spyOn(BBController, "EditOne")
+        let SpyTarget = jest.spyOn(CountryCont, "Change")
         SpyTarget(req,res);
-        expect(BBModel.findOneAndUpdate).toHaveBeenCalled();
+        expect(CountryModel.findOneAndUpdate).toHaveBeenCalled();
     })
     /*it("if it succeeds, returns code 200", () => {
         let SpyTarget = jest.spyOn(BBController, "EditOne")
@@ -106,26 +103,26 @@ describe("/api/battleships/:id METHOD: PATCH", () => {
         expect(res.statusCode).toBe(200);
     })*/
     it("if BBModel.findOneAndUpdate fails(return value is null), then code is 404", () => {
-        BBModel.findOneAndUpdate.mockReturnValueOnce([]) 
+        CountryModel.findOneAndUpdate.mockReturnValueOnce([]) 
         /*let SpyTarget = jest.spyOn(BBController, "EditOne");
         SpyTarget(req,res);*/
-        BBController.EditOne(req,res)
+        CountryCont.Change(req,res)
         //expect(res._getData()).toBe("");
         expect(res.statusCode).toBe(404);
     })
 })
 
-describe("/api/battleships/id, METHOD: GET", () => {
+describe("/api/countries/id, METHOD: GET", () => {
     it("should exist", () => {
-        expect(typeof BBController.FindOneBB).toBe("function");
+        expect(typeof CountryCont.GetOne).toBe("function");
     })
     it("should be called", () => {
-        let SpyTarget = jest.spyOn(BBController, "FindOneBB")
+        let SpyTarget = jest.spyOn(CountryCont, "GetOne")
         SpyTarget(req,res)
-        expect(BBController.FindOneBB).toHaveBeenCalled()
+        expect(CountryCont.GetOne).toHaveBeenCalled()
     })
     it("should return with status code 200", () => {
-        let SpyTarget = jest.spyOn(BBController, "FindOneBB")
+        let SpyTarget = jest.spyOn(CountryCont, "GetOne")
         SpyTarget(req,res)
         expect(res.statusCode).toBe(200)
     })
@@ -136,31 +133,31 @@ describe("/api/battleships/id, METHOD: GET", () => {
         expect(res.statusCode).toBe(404);
     });*/
     it("should return the data if given a correct id, simulated with a functional model", () => {
-        BBModel.findOne = jest.fn(() => {
-            return MockedBBData
+        CountryModel.findOne = jest.fn(() => {
+            return MockedCountryData
         })
-        let SpyTarget = jest.spyOn(BBController,"FindOneBB");
+        let SpyTarget = jest.spyOn(CountryCont,"GetOne");
         SpyTarget(req,res);
-        expect(res._getData()).toStrictEqual([MockedBBData]);
+        expect(res._getData()).toStrictEqual([MockedCountryData]);
     })
 })
 
-describe("/api/battleships/:id METHOD: DELETE", () => {
+describe("/api/countries/:id METHOD: DELETE", () => {
     it("should exist", () => {
-        expect(typeof BBController.DeleteOne).toBe("function");
+        expect(typeof CountryCont.Delete).toBe("function");
     })
     it("should be called", () => {
-        let SpyTarget = jest.spyOn(BBController, "DeleteOne")
+        let SpyTarget = jest.spyOn(CountryCont, "Delete")
         SpyTarget(req,res)
         expect(SpyTarget).toHaveBeenCalled()
     })
     it("should call BBModel.findOneAndDelete", () => {
-        let SpyTarget = jest.spyOn(BBController, "DeleteOne");
+        let SpyTarget = jest.spyOn(CountryCont, "Delete");
         SpyTarget(req,res);
-        expect(BBModel.findOneAndDelete).toHaveBeenCalled();
+        expect(CountryModel.findOneAndDelete).toHaveBeenCalled();
     })
     it("should return with status code 204", () => {
-        let SpyTarget = jest.spyOn(BBController, "DeleteOne");
+        let SpyTarget = jest.spyOn(CountryCont, "Delete");
         SpyTarget(req,res);
         expect(res.statusCode).toBe(204);
     })
